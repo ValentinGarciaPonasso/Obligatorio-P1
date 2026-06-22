@@ -19,6 +19,7 @@ function ocultarSecciones() {
     document.querySelector("#administrarOfertas").style.display = "none"
     document.querySelector("#editarOfertas").style.display = "none"
     document.querySelector("#administrarPostulaciones").style.display = "none"
+    document.querySelector("#estadisticasSistema").style.display = "none"
 }
 
 function ocultarLogin(user) {
@@ -50,6 +51,7 @@ function eventosBotones() {
     document.querySelector("#btnAdminOfertas").addEventListener("click", adminOfertas);
     document.querySelector("#btnAdminPostulaciones").addEventListener("click", adminPostulaciones);
     document.querySelector("#btnEstadisticas").addEventListener("click", verEstadisticas);
+    document.querySelector("#btnBuscarPorTitulo").addEventListener("click", buscarPorTitulo);
 }
 
 function pasarMayuscula(palabra) {
@@ -118,6 +120,12 @@ function registrarUsuario() {
             case 0:
                 resultado = "El registro de: " + usuario.Nombre + " se realizó correctamente";
                 document.querySelector("#resultadoIngreso").innerHTML = resultado;
+                document.querySelector("#registroUser").value = "";
+                document.querySelector("#registroPass").value = "";
+                document.querySelector("#registroPass2").value = "";
+                document.querySelector("#registroName").value = "";
+                document.querySelector("#registroExpe").value = "";
+                document.querySelector("#registroArea").value = "";
                 mostrarSeccionLogin()
                 break;
             default:
@@ -353,20 +361,24 @@ function adminOfertas() {
             resultado += `
                 <div class="card-oferta">
                     <h3>${lo.Titulo}</h3>
+                    <p><strong>ID Oferta:</strong> ${lo.Id}</p>
                     <p><strong>Empresa:</strong> ${lo.Empresa}</p>
                     <p><strong>Descripción:</strong> ${lo.Descripcion}</p>
                     <p><strong>Nivel requerido:</strong> ${pasarMayuscula(lo.NivelRequerido)}</p>
                     <p><strong>Área:</strong> ${pasarMayuscula(lo.AreaOferta)}</p>
-                    <p><strong>Limite de Postulaciones:</strong> ${lo.LimitePostulaciones}</p>
-                    <p><strong>Cantidad de vacantes:</strong> ${lo.CantVacantes}</p>
+                    <p><strong>Postulaciones:</strong>${lo.CantPostulaciones} / ${lo.LimitePostulaciones}</p>
+                    <p><strong>Vacantes:</strong>${lo.CantVacantes} / ${lo.LimiteVacantes}</p>
                 `
             if (lo.OfertaDestacada) {
                 resultado += `<p><strong>Oferta Destacada:</strong>Si</p>`
             } else {
                 resultado += `<p><strong>Oferta Destacada:</strong>No</p>`
             }
+            resultado += `<p><strong>Estado:</strong> ${pasarMayuscula(lo.Estado)}</p>`;
+            if (lo.Estado === "inactiva") {
+                resultado += `<p><strong>Motivo Inactiva:</strong> ${lo.Motivo}</p>`;
+            }
             resultado += `
-                    <p><strong>Estado:</strong> ${pasarMayuscula(lo.Estado)}</p>
                     <button id="btnEditarOferta${lo.Id}" class="btnEditarOferta">Editar</button>
                     <button id="btnCerrarOferta${lo.Id}" class="btnCerrarOferta">Cerrar</button>
                 </div>
@@ -495,7 +507,7 @@ function adminPostulaciones() {
                     <p><strong>Usuario:</strong> ${lP.UserId}</p>
                     <p><strong>Oferta:</strong> ${lP.OfertaId}</p>
                     <p><strong>Id:</strong> ${lP.Id}</p>
-                    <p><strong>Estado:</strong> ${pasarMayuscula(lP.Estado)}</p>
+                    <p style="color: Red;"><strong>Estado:</strong> ${pasarMayuscula(lP.Estado)}</p>
                     <button id="btnAceptarPostulacion${lP.Id}" class="btnAceptarPostulacion">Aceptar</button>
                     <button id="btnRechazarPostulacion${lP.Id}" class="btnRechazarPostulacion">Rechazar</button>
                 </div>
@@ -503,24 +515,167 @@ function adminPostulaciones() {
         }
     }
     document.querySelector("#resultadoadministrarPostulaciones").innerHTML = resultado;
+    for (let lP of listadoPostulaciones) {
+        if (lP.Estado !== "pendiente") {
+            document.querySelector(`#btnAceptarPostulacion${lP.Id}`).disabled = true;
+            document.querySelector(`#btnRechazarPostulacion${lP.Id}`).disabled = true;
+        }
+    }
     let botonesAceptar = document.querySelectorAll(".btnAceptarPostulacion");
     for (let bA of botonesAceptar) {
         bA.addEventListener("click", aceptarPostulacion);
     }
     let botonesRechazar = document.querySelectorAll(".btnRechazarPostulacion");
     for (let bR of botonesRechazar) {
-        bE.addEventListener("click", rechazarPostulacion);
+        bR.addEventListener("click", rechazarPostulacion);
     }
 }
 
-function aceptarPostulacion (){
-
+function aceptarPostulacion() {
+    let idBoton = this.id;
+    let idPostulacion = idBoton.substring(21);
+    let resultado = "";
+    let postulacionAceptada = sistema.aprobarPostulacion(idPostulacion);
+    if (postulacionAceptada === null) {
+        resultado = "No se logró aprobar la postulación seleccionada";
+    } else {
+        resultado = `Postulación ${postulacionAceptada.postulacion.Titulo} (Id: ${postulacionAceptada.postulacion.Id}) aprobada correctamente <br>`;
+        if (postulacionAceptada.cambioEstado) {
+            resultado += `Se modifico la oferta a estado inactiva, motivo: ${postulacionAceptada.motivo} <br>`;
+            if (postulacionAceptada.cantRechazos > 0) {
+                resultado += `Se rechazaron un total de ${postulacionAceptada.cantRechazos} postulaciones`;
+            }
+        }
+    }
+    adminPostulaciones();
+    document.querySelector("#resultadoadministrarPostulaciones2").innerHTML = resultado;
 }
 
-function rechazarPostulacion(){
-    
+function rechazarPostulacion() {
+    let idBoton = this.id;
+    let idPostulacion = idBoton.substring(22);
+    let resultado = "";
+    let postulacionRechazada = sistema.rechazarPostulacion(idPostulacion);
+    if (postulacionRechazada === null) {
+        resultado = "No se logró rechazar la postulación seleccionada";
+    } else {
+        resultado = `Postulación ${postulacionRechazada.Titulo} (Id: ${postulacionRechazada.Id}) rechazada correctamente `;
+    }
+    adminPostulaciones();
+    document.querySelector("#resultadoadministrarPostulaciones2").innerHTML = resultado;
+}
+
+function armarTabla(datosOfertas) {
+    let resultado = `
+            <table>
+                <tr>
+                    <th>Titulo</th>
+                    <th>Postulaciones Pendientes</th>
+                    <th>Postulaciones Aceptadas</th>
+                    <th>Postulaciones Rechazadas</th>
+                    <th>Total postulaciones</th>
+                </tr>
+        `;
+    for (let dO of datosOfertas) {
+        resultado += `
+                <tr>
+                    <td>${dO.titulo}</td>
+                    <td>${dO.cantPend}</td>
+                    <td>${dO.cantApro}</td>
+                    <td>${dO.cantRech}</td>
+                    <td>${dO.cantTotal}</td>
+                </tr>
+            `
+    }
+    resultado += `
+            </table>
+        `;
+    return resultado
 }
 
 function verEstadisticas() {
+    ocultarSecciones();
+    ocultarLogin(usuarioLogeado);
+    document.querySelector("#estadisticasSistema").style.display = "block";
+    let resultado1 = "";
+    let datosOferta = sistema.calcularDatosOferta();
+    if (datosOferta.length === 0) {
+        resultado1 = "No se encontraron ofertas disponibles";
+    } else {
+        resultado1 = armarTabla(datosOferta);
+    }
+    document.querySelector("#postulacionesEstadisticas").innerHTML = resultado1;
 
+    let resultado2 = "";
+    let estadosOfertas = sistema.calcularEstadosOfertas();
+    if (estadosOfertas.length === 0) {
+        resultado2 = "No se encontraron ofertas para mostrar";
+    } else {
+        resultado2 += `
+            <table>
+                <tr>
+                    <th>Estado</th>
+                    <th>Total</th>
+                </tr>
+                <tr>
+                    <td>Activas</td>
+                    <td>${estadosOfertas.activas}</td>
+                </tr>
+                <tr>
+                    <td>Inactivas</td>
+                    <td>${estadosOfertas.inactivas}</td>
+                </tr>
+                <tr>
+                    <td>Cerradas</td>
+                    <td>${estadosOfertas.cerradas}</td>
+                </tr>
+        `
+    }
+    document.querySelector("#ofertasEstadisticas").innerHTML = resultado2;
+
+    let resultado3 = "";
+    let vacantes = sistema.calcularPorcentajeVacantes();
+    if (vacantes === null) {
+        resultado3 = "Error al calcular el porcentaje de vacantes cubiertas";
+    } else {
+        resultado3 = `
+            Vacantes cubiertas: ${vacantes.cubiertas} <br>
+            Vacantes totales: ${vacantes.totales} <br>
+            Porcentaje cubiertas: ${vacantes.porcentaje}
+        `
+    }
+    document.querySelector("#vacantesEstadisticas2").innerHTML = resultado3;
+
+    let resultado4 = "";
+    let mayorPostulante = sistema.calcularMayorPostulante();
+    if (mayorPostulante.length === 0) {
+        resultado4 = "No se encontraron postulantes";
+    } else {
+        for (let mP of mayorPostulante) {
+            resultado4 += `Postulante: ${mP.user.Nombre} (${mP.user.User}) -  Cantidad de postulaciones: ${mP.cant} <br>`
+        }
+    }
+    document.querySelector("#postulantesEstadisticas").innerHTML = resultado4;
+}
+
+function buscarPorTitulo() {
+    document.querySelector("#resultadoBuscarPorTitulo").innerHTML = "";
+    let titulo = document.querySelector("#txtBuscarPorTitulo").value;
+    let resultado = "";
+    let datosOferta = sistema.calcularDatosOferta(titulo);
+    if (titulo !== "") {
+        if (datosOferta.length === 0) {
+            resultado = "No se encontraron ofertas con ese titulo";
+            document.querySelector("#resultadoBuscarPorTitulo").innerHTML = resultado;
+            datosOferta = sistema.calcularDatosOferta();
+            document.querySelector("#postulacionesEstadisticas").innerHTML = armarTabla(datosOferta);
+
+        } else {
+            resultado = armarTabla(datosOferta);
+            document.querySelector("#postulacionesEstadisticas").innerHTML = resultado;
+        }
+    } else {
+        datosOferta = sistema.calcularDatosOferta();
+        document.querySelector("#postulacionesEstadisticas").innerHTML = armarTabla(datosOferta);
+    }
 }
