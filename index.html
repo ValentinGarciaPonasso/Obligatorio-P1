@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="estilos/styles.css">
+</head>
+
+<body>
+    <header class="contenedor">
+        <h1>OBLIGATORIO P1 - CARTELERA DE POSTULACIONES</h1>
+        <nav id="sectionNav">
+            <ul id="navUser">
+                <li id="btnVerOfertas"><a href="#">Ofertas</a></li>
+                <li id="btnVerOfertasDestacadas"><a href="#">Ofertas Destacadas</a></li>
+                <li id="btnVerPostulaciones"><a href="#">Mis Postulaciones</a></li>
+            </ul>
+            <ul id="navAdmin">
+                <li id="btnPrincipalAdmin"><a href="#">Crear Ofertas</a></li>
+                <li id="btnAdminOfertas"><a href="#">Administrar de ofertas</a></li>
+                <li id="btnAdminPostulaciones"><a href="#">Postulaciones</a></li>
+                <li id="btnEstadisticas"><a href="#">Estadisticas del sistema</a></li>
+            </ul>
+            <section id="sectionCerrarSesion">
+                <p id="resultadoCerrarSesion"></p>
+                <button id="btnCerrarSesion" class="botones">Cerrar Sesión</button>
+            </section>
+        </nav>
+        <!-- ---------LOGIN--------- -->
+        <section id="sectionLogin">
+            <label for="loginUser">Nombre de usuario</label>
+            <input type="text" id="loginUser" value="admin1">
+            <label for="loginPass">Contraseña</label>
+            <input type="password" id="loginPass" value="Admin123">
+            <button id="btnIngreso" class="botones">Ingresar</button>
+            <button id="navegarSectionRegistro" class="botones">Registrar</button>
+            <p id="resultadoIngreso"></p>
+        </section>
+
+    </header>
+
+    <main class="contenedor">
+
+        <!-- ---------REGISTRO--------- -->
+        <section id="sectionRegistro">
+            <h2>Registro Usuario</h2>
+            <label for="registroUser">Nombre de usuario</label>
+            <input type="text" id="registroUser">
+            <label for="registroPass">Contraseña</label>
+            <input type="password" id="registroPass">
+            <label for="registroPass2">Repetir Contraseña</label>
+            <input type="password" id="registroPass2">
+            <label for="registroName">Nombre completo</label>
+            <input type="text" id="registroName">
+            <label for="registroExpe">Nivel de experiencia</label>
+            <select name="registroExpe" id="registroExpe">
+                <option value="-1">Seleccione...</option>
+                <option value="jr">Junior</option>
+                <option value="semiSr">Semi-Senior</option>
+                <option value="sr">Senior</option>
+            </select>
+            <label for="registroArea">Área de interés</label>
+            <select name="registroArea" id="registroArea">
+                <option value="-1">Seleccione...</option>
+                <option value="tecnologia">Tecnologia</option>
+                <option value="disenio">Diseño</option>
+                <option value="marketing">Marketing</option>
+                <option value="administracion">Administración</option>
+                <option value="otros">Otros</option>
+            </select>
+            <button id="btnRegister">Registrarse</button>
+            <p id="resultadoRegister"></p>
+        </section>
+
+
+        <!-- ---------USER--------- -->
+        <section id="sectionPincipalUser">
+            <h2>Ofertas Laborales</h2>
+            <div class="seccionOfertas" id="resultadoOfertas"></div>
+            <p><strong id="resultadoOfertas2"></strong></p>
+            <button id="btnTotalOfertas" class="botones">Ver todas</button>
+        </section>
+
+        <section id="sectionOfertasDestacadas">
+            <h2>Ofertas Destacadas</h2>
+            <div class="seccionOfertas" id="resultadoOfertasDestacadas1"></div>
+        </section>
+
+        <section id="sectionPostulacionesUsuario">
+            <h2>Postulaciones Usuario</h2>
+            <div class="seccionOfertas" id="resultadoPostulacionesUsuario"></div>
+        </section>
+
+        <!-- ---------ADMIN--------- -->
+        <section id="sectionPincipalAdmin">
+            <h2>Crear Oferta</h2>
+            <form id="formCrearOferta">
+                <label for="tituloOferta">Titulo</label>
+                <input type="text" id="tituloOferta">
+                <label for="empresaOferta">Empresa</label>
+                <input type="text" id="empresaOferta">
+                <label for="descripcionOferta">Descripcion</label>
+                <textarea type="text" id="descripcionOferta" maxlength="100"></textarea>
+                <label for="nivelOferta">Nivel requerido</label>
+                <select name="nivelOferta" id="nivelOferta">
+                    <option value="-1">Seleccione...</option>
+                    <option value="jr">Junior</option>
+                    <option value="semiSr">Semi-Senior</option>
+                    <option value="sr">Senior</option>
+                </select>
+                <label for="areaOferta">Área</label>
+                <select name="areaOferta" id="areaOferta">
+                    <option value="-1">Seleccione...</option>
+                    <option value="tecnologia">Tecnologia</option>
+                    <option value="disenio">Diseño</option>
+                    <option value="marketing">Marketing</option>
+                    <option value="administracion">Administración</option>
+                    <option value="otros">Otros</option>
+                </select>
+                <label for="limiteOferta">Limite de Postulaciones</label>
+                <input type="number" id="limiteOferta">
+                <label for="vacantesOferta">Cantidad de vacantes</label>
+                <input type="number" id="vacantesOferta">
+                <label for="destacadaOferta">Destacar oferta</label>
+                <input type="checkbox" id="destacadaOferta">
+                <button type="button" id="btnCrearOferta">Crear oferta</button>
+                <p><strong id="resultadoCrearOfertas"></strong></p>
+            </form>
+        </section>
+
+        <section id="administrarOfertas">
+            <h2>Administrar ofertas</h2>
+            <div class="seccionOfertas" id="resultadoAdministrarOfertas"></div>
+            <p id="resultadoAdministrarOfertas2"></p>
+        </section>
+
+        <section id="editarOfertas">
+            <h2>Editar Oferta</h2>
+            <div class="seccionOfertas" id="resultadoEditarOfertas"></div>
+            <p id="resultadoEditarOfertas2"></p>
+        </section>
+
+        <section id="administrarPostulaciones">
+            <h2>Administrar Postulaciones</h2>
+            <div class="seccionPostulaciones" id="resultadoadministrarPostulaciones"></div>
+            <p id="resultadoadministrarPostulaciones2"></p>
+        </section>
+
+    </main>
+
+    <footer class="contenedor">
+        <p>Obligatorio P1 - Juan Valentín Garcia Ponasso - Estudiante 225709</p>
+    </footer>
+
+    <script src="./js/estructura/user.js"></script>
+    <script src="./js/estructura/postulaciones.js"></script>
+    <script src="./js/estructura/ofertas.js"></script>
+    <script src="./js/estructura/sistema.js"></script>
+    <script src="./js/logica.js"></script>
+</body>
+
+</html>

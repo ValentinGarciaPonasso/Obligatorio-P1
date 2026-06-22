@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=div, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <div>
+        <h2>Registro Usuario</h2>
+        <form action="registroUsuario" method="post">
+            <label for="regUser">Usuario:</label>
+            <input type="text" id="regUser" name="userName" required><br><br>
+
+            <label for="regPass">Contraseña:</label>
+            <input type="password" id="regPass" name="pass" required><br><br>
+
+            <label for="name">Nombre Completo:</label>
+            <input type="text" id="name" name="name" required><br><br>
+
+            <label for="expe">Nivel de experiencia:</label>
+            <select id="expe" name="expe" required>
+                <option value="">Seleccionar</option>
+                <option value="jr">Junior</option>
+                <option value="semiSr">Semi-Senior</option>
+                <option value="sr">Senior</option>
+            </select><br><br>
+
+            <label for="area">Área de interés:</label>
+            <select name="area" id="area" required>
+                <option value="">Seleccionar</option>
+                <option value="tec">Tecnología</option>
+                <option value="dis">Diseño</option>
+                <option value="mark">Marketing</option>
+                <option value="adm">Administración</option>
+                <option value="otro">Otro</option>
+            </select><br><br>
+
+            <input type="submit" value="Registrar">
+        </form>
+    </div>
+    <div>
+        <h2>Login</h2>
+        <form action="login">
+            <label for="loginUser">Usuario</label>
+            <input type="text" id="loginUser">
+            <label for="loginPass">Contraseña</label>
+            <input type="text" id="loginPass">
+            <input type="submit" value="Ingresar">
+        </form>
+    </div>
+    <div>
+        <h2>Cerrar Sesión</h2>
+        <p id="pNombreUsuario" style="display: inline-block;">Nombre de usuario logeado</p>
+        <button id="btnCerrarSesion">Cerrar Sesión</button>
+    </div>
+    <div>
+        <h2>Ofertas activas</h2>
+        <div style="border: 1px solid black; width: 200px; padding: 5px; margin: 5px;">
+            <p>Titulo</p>
+            <p>Empresa</p>
+            <p>Descripcion</p>
+            <p>Nivel requerido</p>
+            <p>Área</p>
+            <button>Postularse</button>
+        </div>
+        <div style="border: 1px solid black; width: 200px; padding: 5px; margin: 5px;">
+            <p>Titulo</p>
+            <p>Empresa</p>
+            <p>Descripcion</p>
+            <p>Nivel requerido</p>
+            <p>Área</p>
+            <button>Postularse</button>
+        </div>
+        <button>Ver todas las ofertas</button>
+    </div>
+    <div>
+        <h2>Ofertas destacadas</h2>
+        <div style="border: 1px solid black; width: 200px; padding: 5px; margin: 5px;">
+            <p>Titulo</p>
+            <p>Empresa</p>
+            <p>Descripcion</p>
+            <p>Nivel requerido</p>
+            <p>Área</p>
+            <button>Postularse</button>
+        </div>
+        <div style="border: 1px solid black; width: 200px; padding: 5px; margin: 5px;">
+            <p>Titulo</p>
+            <p>Empresa</p>
+            <p>Descripcion</p>
+            <p>Nivel requerido</p>
+            <p>Área</p>
+            <button>Postularse</button>
+        </div>
+        <div>
+            <h2>Postulaciones realizadas</h2>
+            <div style="border: 1px solid black; width: 200px; padding: 5px; margin: 5px;">
+                <p>Titulo</p>
+                <p>Estado</p>
+                <p>Empresa</p>
+                <p>Descripcion</p>
+                <p>Nivel requerido</p>
+                <p>Área</p>
+            </div>
+            <div style="border: 1px solid black; width: 200px; padding: 5px; margin: 5px;">
+                <p>Titulo</p>
+                <p>Estado</p>
+                <p>Empresa</p>
+                <p>Descripcion</p>
+                <p>Nivel requerido</p>
+                <p>Área</p>
+            </div>
+        </div>
+        <div>
+            <h2>Crear nueva oferta</h2>
+            <form action="crearOferta">
+                <label for="crearTituloOferta">Titulo de la oferta</label>
+                <input type="text" id="crearTituloOferta"><br><br>
+                <label for="crearEmpresaOferta">Nombre de la empresa</label>
+                <input type="text" id="crearEmpresaOferta"><br><br>
+                <label for="crearDescripcionOferta">Descripcion de la oferta</label><br>
+                <textarea type="text" id="crearDescripcionOferta"></textarea><br><br>
+                <label for="crearNivelOferta">Nivel requerido</label>
+                <select id="crearNivelOferta">
+                    <option value="">Seleccionar</option>
+                    <option value="jr">Junior</option>
+                    <option value="semiSr">Semi-Senior</option>
+                    <option value="sr">Senior</option>
+                </select><br><br>
+                <label for="crearAreaOferta">Área</label>
+                <select id="crearAreaOferta">
+                    <option value="">Seleccionar</option>
+                    <option value="tec">Tecnología</option>
+                    <option value="dis">Diseño</option>
+                    <option value="mark">Marketing</option>
+                    <option value="adm">Administración</option>
+                    <option value="otro">Otro</option>
+                </select><br><br>
+                <label for="crearLimiteOferta">Límite de postulaciones</label>
+                <input type="text" id="crearLimiteOferta"><br><br>
+                <label for="crearVacantesOferta">Vacantes disponibles</label>
+                <input type="text" id="crearVacantesOferta"><br><br>
+                <label for="crearDestacadaOferta">Destacar oferta</label>
+                <input type="checkbox" id="crearDestacadaOferta"><br><br>
+                <input type="submit" value="Crear oferta">
+            </form>
+        </div>
+        <div>
+            <h2>Administración de Ofertas</h2>
+            <div style="display: flex; flex-direction: row;">
+                <form style="border: 1px solid black; width: 250px; padding: 10px; margin: 5px;">
+                    <label>Título</label><br>
+                    <input type="text" value="Programador Frontend">
+                    <br><br>
+                    <label>Empresa</label>
+                    <input type="text" value="Tech Solutions"> <br><br>
+                    <label>Descripción</label><br>
+                    <textarea>Se busca desarrollador con experiencia en JavaScript.</textarea>
+                    <br><br>
+                    <label>Nivel requerido</label><br>
+                    <select>
+                        <option>Junior</option>
+                        <option selected>Semisenior</option>
+                        <option>Senior</option>
+                    </select>
+                    <br><br>
+                    <label>Área</label><br>
+                    <input type="text" value="Desarrollo Web">
+                    <br><br>
+                    <label>Postulaciones</label><br>
+                    <input type="number" value="15">
+                    <br><br>
+                    <label>Vacantes</label><br>
+                    <input type="number" value="3">
+                    <br><br>
+                    <label for="crearDestacadaOferta">Destacar oferta</label>
+                    <input type="checkbox" id="crearDestacadaOferta" checked><br><br>
+                    <button type="submit">Editar oferta</button>
+                    <button type="button">Cerrar oferta</button>
+                </form>
+                <form style="border: 1px solid black; width: 250px; padding: 10px; margin: 5px;">
+                    <label>Título</label><br>
+                    <input type="text" value="Programador Frontend">
+                    <br><br>
+                    <label>Empresa</label>
+                    <input type="text" value="Tech Solutions"> <br><br>
+                    <label>Descripción</label><br>
+                    <textarea>Se busca desarrollador con experiencia en JavaScript.</textarea>
+                    <br><br>
+                    <label>Nivel requerido</label><br>
+                    <select>
+                        <option>Junior</option>
+                        <option selected>Semisenior</option>
+                        <option>Senior</option>
+                    </select>
+                    <br><br>
+                    <label>Área</label><br>
+                    <input type="text" value="Desarrollo Web">
+                    <br><br>
+                    <label>Postulaciones</label><br>
+                    <input type="number" value="15">
+                    <br><br>
+                    <label>Vacantes</label><br>
+                    <input type="number" value="3">
+                    <br><br>
+                    <label for="crearDestacadaOferta">Destacar oferta</label>
+                    <input type="checkbox" id="crearDestacadaOferta" checked><br><br>
+                    <button type="submit">Editar oferta</button>
+                    <button type="button">Cerrar oferta</button>
+                </form>
+            </div>
+        </div>
+        <div>
+            <h2>Procesar Postulaciones</h2>
+            <div style="border: 1px solid black; width: 250px; padding: 10px; margin: 5px;">
+                <p>Titulo</p>
+                <p>Postulante</p>
+                <p>Empresa</p>
+                <p>Descipción</p>
+                <p>Nivel requerido</p>
+                <p>Área</p>
+                <button>Aceptar</button>
+                <button>Rechazar</button>
+            </div>
+            <div style="border: 1px solid black; width: 250px; padding: 10px; margin: 5px;">
+                <p>Titulo</p>
+                <p>Postulante</p>
+                <p>Empresa</p>
+                <p>Descipción</p>
+                <p>Nivel requerido</p>
+                <p>Área</p>
+                <button>Aceptar</button>
+                <button>Rechazar</button>
+            </div>
+        </div>
+        <div>
+            <h2>Estadisticas del Sistema </h2>
+
+            <div>
+                <h3>Listado de ofertas</h3>
+                <div style="border: 1px solid black; width: 250px; padding: 10px; margin: 5px;">
+                    <p>Titulo</p>
+                    <p>Cantidad de postulaciones pendientes</p>
+                    <p>Cantidad de postulaciones aceptadas</p>
+                    <p>Cantidad de postulaciones rechazadas</p>
+                    <p>Total de postulaciones</p>
+                </div>
+                <div style="border: 1px solid black; width: 250px; padding: 10px; margin: 5px;">
+                    <p>Titulo</p>
+                    <p>Cantidad de postulaciones pendientes</p>
+                    <p>Cantidad de postulaciones aceptadas</p>
+                    <p>Cantidad de postulaciones rechazadas</p>
+                    <p>Total de postulaciones</p>
+                </div>
+            </div>
+            <div>
+                <h3>Total de ofertas por estado</h3>
+                <p>Activas: </p>
+                <p>Inactivas: </p>
+                <p>Cerradas: </p>
+            </div>
+            <div>
+                <h3>Porcentaje de vacantes cubiertas entre todas las ofertas</h3>
+                <p>Porcentaje</p>
+            </div>
+            <div>
+                <h3>Postulante con mas postulaciones activas</h3>
+                <p>Nombre Postulante</p>
+            </div>
+        </div>
+</body>
+
+</html>
