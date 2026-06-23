@@ -102,12 +102,13 @@ function registrarUsuario() {
     let area = document.querySelector("#registroArea").value;
     let rol = "user";
     let resultado = "";
+    let usuarioAgregado
     //VALIDAMOS QUE LAS CONTRASEÑAS COINCIDAN
     if (pass !== pass2) {
         resultado = "Las contraseñas no coinciden";
     } else {
         let usuario = new User(user, pass, nombre, experiencia, area, rol);
-        let usuarioAgregado = sistema.addUser(usuario)
+        usuarioAgregado = sistema.addUser(usuario)
         //MOSTRAMOS MENSAJE DEPENDIENDO DEL CÓDIGO DE ERROR
         switch (usuarioAgregado) {
             case 1:
@@ -144,7 +145,9 @@ function registrarUsuario() {
         }
     }
     document.querySelector("#resultadoRegister").innerHTML = resultado;
-    mostrarLoginPrincipal()
+    if(usuarioAgregado===0){
+        mostrarLoginPrincipal()
+    }
 
 }
 

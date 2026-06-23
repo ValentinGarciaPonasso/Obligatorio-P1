@@ -5,32 +5,64 @@
 }
 
 
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+    height: 100%;
+    background-color: rgb(170, 170, 170);
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* header{
+    flex: 1;
+} */
+
+main {
+    flex: 1;
+}
+
+
+
+footer {
+    background-color: #2c3e50;
+    color: white;
+    font-weight: bold;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 /*REGISTER*/
 
 #sectionRegistro {
-    width: 420px;
+    height: 100%;
+    width: 40%;
     margin: 50px auto;
-    padding: 35px;
+    padding: 15px;
     background-color: white;
     border-radius: 16px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
     display: flex;
     flex-direction: column;
 }
 
 #sectionRegistro h2 {
     text-align: center;
-    margin-bottom: 25px;
-    background-color:#2c3e50 ;
+    margin-bottom: 10px;
+    background-color: #2c3e50;
     color: white;
-    font-size: 30px;
+    font-size: 20px;
 }
 
 /* Labels */
 #sectionRegistro label {
-    margin-top: 14px;
-    margin-bottom: 6px;
-    font-size: 14px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-size: 10px;
     font-weight: bold;
     color: #475569;
 }
@@ -40,12 +72,12 @@
 #sectionRegistro select {
     width: 100%;
     box-sizing: border-box;
-    padding: 12px;
-    margin: 7px 0px;
+    padding: 10px;
+    margin: 6px 0px;
     border: 1px solid #cbd5e1;
     border-radius: 10px;
     background-color: #f8fafc;
-    font-size: 14px;
+    font-size: 10px;
     transition: 0.2s;
 
 }
@@ -55,18 +87,18 @@
     outline: none;
     border-color: #6366f1;
     background-color: white;
-    box-shadow: 0 0 0 4px rgba(99,102,241,0.15);
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
 }
 
 /* Botón */
 #sectionRegistro button {
-    margin-top: 25px;
-    padding: 14px;
+    margin-top: 5px;
+    padding: 10px;
     border: none;
     border-radius: 10px;
     background-color: #2c3e50;
     color: white;
-    font-size: 15px;
+    font-size: 10px;
     font-weight: bold;
     cursor: pointer;
     transition: 0.2s;
@@ -137,7 +169,7 @@
     background-color: #4f46e5;
 }
 
-#sectionPincipalUser{
+#sectionPincipalUser {
     display: flex;
     flex-direction: column;
     gap: 40px;
@@ -147,7 +179,7 @@
 
 
 
-#sectionPincipalUser p{
+#sectionPincipalUser p {
     font-size: 17px;
 }
 
@@ -166,7 +198,7 @@
     gap: 20px;
 }
 
-.seccionOfertas #card-oferta{
+.seccionOfertas #card-oferta {
     width: calc(25% - 15px);
 }
 
@@ -176,44 +208,24 @@
 }
 
 
-#headerPrincipal {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-}
 
-#headerPrincipal h1 {
-    margin: 0;
-}
-
-#sectionLogin {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-body {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    min-height: 100vh;
-    background-color: rgb(170, 170, 170);
-}
 
 #headerPrincipal {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
     height: 80vh;
-    padding: 0 60px;
-
-    display: flex;
-    align-items: center;
+    padding: 0;
+    margin: 0;
 }
 
-#headerPrincipal h1 {
-    max-width: 650px;
-    margin: 0;
 
-    font-size: 42px;
+
+#headerPrincipal h1 {
+    display: block;
+    max-width: 50%;
+    margin: 0;
+    font-size: 35px;
     line-height: 1.15;
     color: #111;
 }
@@ -221,17 +233,15 @@ body {
 /* Caja del login */
 #sectionLogin {
     margin-left: auto;
-
     width: 320px;
     padding: 25px;
-
     display: flex;
     flex-direction: column;
     gap: 10px;
-
+    align-items: center;
     background-color: white;
     border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
 }
 
 /* Labels */
@@ -276,26 +286,12 @@ body {
 } */
 
 
-#headerLogin{
+#headerLogin {
     display: flex;
     justify-content: space-between;
 }
 
-main {
-    flex: 1;
-} 
 
-
-
-footer {
-    background-color: #2c3e50;
-    color: white;
-    font-weight: bold;
-    height: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
 
 
@@ -345,7 +341,7 @@ footer {
     cursor: pointer;
 }
 
-button:disabled{
+button:disabled {
     background-color: #5d6d7e;
     color: #bdc3c7;
     cursor: not-allowed;
@@ -370,7 +366,7 @@ button:disabled{
     display: flex;
     flex-direction: column;
     gap: 10px;
-    width: 80%;
+    width: 85%;
     margin: 0 auto;
 }
 
@@ -483,7 +479,8 @@ h2 {
     font-weight: bold;
 } */
 
-#formCrearOferta, #formEditarOferta{
+#formCrearOferta,
+#formEditarOferta {
     width: 450px;
     margin: 50px auto;
     padding: 35px;
@@ -491,7 +488,7 @@ h2 {
     background-color: white;
     border-radius: 16px;
 
-    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
 
     display: flex;
     flex-direction: column;
@@ -538,13 +535,13 @@ h2 {
 #formCrearOferta textarea:focus,
 #formEditarOferta input:focus,
 #formEditarOferta select:focus,
-#formEditarOferta textarea:focus  {
+#formEditarOferta textarea:focus {
     outline: none;
 
     border-color: #6366f1;
     background-color: white;
 
-    box-shadow: 0 0 0 4px rgba(99,102,241,0.15);
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
 }
 
 /* Textarea */
@@ -556,7 +553,7 @@ h2 {
 
 /* Checkbox */
 #destacadaOferta,
-#modificarDestacadaOferta{
+#modificarDestacadaOferta {
     width: auto !important;
     margin-top: 10px;
     transform: scale(1.2);
@@ -632,5 +629,3 @@ tr {
 tr:hover {
     background-color: #e8f0fe;
 }
-
-
