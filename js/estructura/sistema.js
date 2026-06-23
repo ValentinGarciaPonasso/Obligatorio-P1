@@ -344,11 +344,12 @@ class Sistema {
                                 o.Motivo = "Cantidad de vacantes cubiertas";
                                 cambioEstado = true;
                                 motivo = o.Motivo;
-                                cantRechazos = this.rechazarPostulaciones(o.Id);
+                                cantRechazos = this.rechazarPostulaciones(o.Id); 
                             }
                         }
                     }
                 }
+                cantRechazos --;
                 p.Estado = "aprobada";
                 let postulacionAceptada = {
                     postulacion: p,
