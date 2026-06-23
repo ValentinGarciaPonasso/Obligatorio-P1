@@ -4,16 +4,109 @@
     box-sizing: border-box;
 }
 
+
+/*REGISTER*/
+
+#sectionRegistro {
+    width: 420px;
+    margin: 50px auto;
+    padding: 35px;
+    background-color: white;
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+}
+
+#sectionRegistro h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    background-color:#2c3e50 ;
+    color: white;
+    font-size: 30px;
+}
+
+/* Labels */
+#sectionRegistro label {
+    margin-top: 14px;
+    margin-bottom: 6px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #475569;
+}
+
+/* Inputs y selects */
+#sectionRegistro input,
+#sectionRegistro select {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px;
+    margin: 7px 0px;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    background-color: #f8fafc;
+    font-size: 14px;
+    transition: 0.2s;
+
+}
+
+#sectionRegistro input:focus,
+#sectionRegistro select:focus {
+    outline: none;
+    border-color: #6366f1;
+    background-color: white;
+    box-shadow: 0 0 0 4px rgba(99,102,241,0.15);
+}
+
+/* Botón */
+#sectionRegistro button {
+    margin-top: 25px;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    background-color: #2c3e50;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+    align-self: center;
+}
+
+#btnRegister:hover {
+    background-color: #4f46e5;
+}
+
+/* Resultado */
+#resultadoRegister {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+
+
+/*------------------------------*/
+
+
 .card-oferta {
     width: 250px;
     border: 1px solid black;
     padding: 15px;
     margin: 10px;
-    background-color: rgb(211, 192, 190);
+    background-color: white;
+
+    /* display: flex;
+    flex-direction: column; */
+    /* background-color: rgb(211, 192, 190); */
 }
 
 .card-oferta h3 {
     margin-top: 0;
+    background-color: #2c3e50;
+    color: white;
+    padding: 10px;
 }
 
 .card-oferta p {
@@ -25,10 +118,56 @@
     cursor: pointer;
 }
 
-.seccionOfertas {
+.card-oferta button {
+    margin: 20px auto 10px;
+    align-self: center;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    background-color: #2c3e50;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+    align-self: center;
+}
+
+.card-oferta button:hover {
+    background-color: #4f46e5;
+}
+
+#sectionPincipalUser{
     display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+
+}
+
+
+
+#sectionPincipalUser p{
+    font-size: 17px;
+}
+
+
+.seccionPostulaciones {
+    display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
     gap: 20px;
+}
+
+.seccionOfertas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.seccionOfertas #card-oferta{
+    width: calc(25% - 15px);
 }
 
 #resultadoOfertas2 {
@@ -36,23 +175,121 @@
     font-weight: bold;
 }
 
+
+#headerPrincipal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+#headerPrincipal h1 {
+    margin: 0;
+}
+
+#sectionLogin {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
 body {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     min-height: 100vh;
-    background-color: rgb(182, 177, 177);
+    background-color: rgb(170, 170, 170);
+}
+
+#headerPrincipal {
+    height: 80vh;
+    padding: 0 60px;
+
+    display: flex;
+    align-items: center;
+}
+
+#headerPrincipal h1 {
+    max-width: 650px;
+    margin: 0;
+
+    font-size: 42px;
+    line-height: 1.15;
+    color: #111;
+}
+
+/* Caja del login */
+#sectionLogin {
+    margin-left: auto;
+
+    width: 320px;
+    padding: 25px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+}
+
+/* Labels */
+#sectionLogin label {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+/* Inputs */
+#sectionLogin input {
+    padding: 12px;
+
+    border: 1px solid #999;
+    border-radius: 8px;
+
+    font-size: 15px;
+}
+
+/* Botones */
+#sectionLogin button {
+    padding: 12px;
+
+    border: none;
+    border-radius: 8px;
+
+    background-color: #2c3e50;
+    color: white;
+
+    font-size: 15px;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+#sectionLogin button:hover {
+    background-color: #4f46e5;
+}
+
+/* #headerLogin{
+    background-color:#2c3e50;
+    color: white;
+} */
+
+
+#headerLogin{
+    display: flex;
+    justify-content: space-between;
 }
 
 main {
     flex: 1;
-}
+} 
 
 
 
 footer {
-    background-color: rgb(211, 192, 190);
-    color: black;
+    background-color: #2c3e50;
+    color: white;
     font-weight: bold;
     height: 60px;
     display: flex;
@@ -64,10 +301,9 @@ footer {
 
 #sectionNav {
     padding: 1rem 0rem;
-    display: flex;
     gap: 20px;
     list-style: none;
-    justify-content: space-between;
+
 }
 
 #sectionNav ul {
@@ -75,30 +311,44 @@ footer {
     gap: 20px;
     list-style: none;
     padding: 0;
+    justify-content: space-around;
+}
 
+#navUser {
+    justify-content: space-around;
 }
 
 #sectionNav li {
     padding: 10px 15px;
     border-radius: 8px;
     transition: 0.3s;
+    align-self: center;
 }
 
 #sectionNav li:hover {
-    background-color: rgb(187, 83, 72);
+    background-color: #2c3e50;
     cursor: pointer;
 }
+
+
 
 .botones {
     padding: 10px 15px;
     border-radius: 8px;
     transition: 0.3s;
-    background-color: rgb(211, 192, 190);
+    background-color: #2c3e50;
+    color: white;
 }
 
 .botones:hover {
-    background-color: rgb(187, 83, 72);
+    background-color: #4f46e5;
     cursor: pointer;
+}
+
+button:disabled{
+    background-color: #5d6d7e;
+    color: #bdc3c7;
+    cursor: not-allowed;
 }
 
 #sectionNav a {
@@ -108,6 +358,7 @@ footer {
 }
 
 #sectionCerrarSesion {
+    display: flex;
     justify-content: space-around;
     align-items: center;
     padding: 0.5rem 1rem;
@@ -119,6 +370,8 @@ footer {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    width: 80%;
+    margin: 0 auto;
 }
 
 /* h1{
@@ -135,7 +388,7 @@ h2 {
 
 #sectionPincipalAdmin {
     max-width: 700px;
-    margin: 30px auto;
+    margin: 15px auto;
     font-family: Arial, sans-serif;
 }
 
@@ -144,13 +397,13 @@ h2 {
     margin-bottom: 15px;
 }
 
-#formCrearOferta, #formEditarOferta {
+/* #formCrearOferta, #formEditarOferta {
     display: grid;
     grid-template-columns: 200px 1fr;
     gap: 12px 15px;
     align-items: center;
-    padding: 20px;
-    background: rgb(211, 192, 190);
+    padding: 40px 20px 20px 20px;
+    background: white;
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
@@ -228,4 +481,156 @@ h2 {
     text-align: center;
     color: rgb(167, 8, 8);
     font-weight: bold;
+} */
+
+#formCrearOferta, #formEditarOferta{
+    width: 450px;
+    margin: 50px auto;
+    padding: 35px;
+
+    background-color: white;
+    border-radius: 16px;
+
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+
+    display: flex;
+    flex-direction: column;
+
+    font-family: Arial, sans-serif;
 }
+
+/* Labels */
+#formCrearOferta label,
+#formEditarOferta label {
+    margin-top: 14px;
+    margin-bottom: 6px;
+
+    font-size: 14px;
+    font-weight: bold;
+    color: #475569;
+}
+
+/* Inputs, selects y textarea */
+#formCrearOferta input,
+#formCrearOferta select,
+#formCrearOferta textarea,
+#formEditarOferta input,
+#formEditarOferta select,
+#formEditarOferta textarea {
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 12px;
+
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+
+    background-color: #f8fafc;
+
+    font-size: 14px;
+
+    transition: 0.2s;
+}
+
+/* Focus */
+#formCrearOferta input:focus,
+#formCrearOferta select:focus,
+#formCrearOferta textarea:focus,
+#formEditarOferta input:focus,
+#formEditarOferta select:focus,
+#formEditarOferta textarea:focus  {
+    outline: none;
+
+    border-color: #6366f1;
+    background-color: white;
+
+    box-shadow: 0 0 0 4px rgba(99,102,241,0.15);
+}
+
+/* Textarea */
+#formCrearOferta textarea,
+#formEditarOferta textarea {
+    resize: none;
+    min-height: 100px;
+}
+
+/* Checkbox */
+#destacadaOferta,
+#modificarDestacadaOferta{
+    width: auto !important;
+    margin-top: 10px;
+    transform: scale(1.2);
+}
+
+/* Botón */
+#btnCrearOferta,
+#formEditarOferta button {
+    margin-top: 25px;
+
+    padding: 14px;
+
+    border: none;
+    border-radius: 10px;
+
+    background-color: #2c3e50;
+    color: white;
+
+    font-size: 15px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+#btnCrearOferta:hover {
+    background-color: #4f46e5;
+}
+
+/* Resultado */
+#resultadoCrearOfertas {
+    display: block;
+    margin-top: 15px;
+
+    text-align: center;
+    font-size: 14px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-family: Arial, sans-serif;
+
+}
+
+th {
+    background-color: #2c3e50;
+    color: white;
+    padding: 12px;
+    text-align: center;
+}
+
+/* th:nth-child(1){
+    text-align: left;
+} */
+
+td {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    text-align: center;
+}
+
+/* td:nth-child(1){
+    text-align: left;
+} */
+
+tr {
+    background-color: #f5f5f5;
+}
+
+tr:hover {
+    background-color: #e8f0fe;
+}
+
+

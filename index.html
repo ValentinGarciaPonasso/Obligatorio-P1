@@ -10,40 +10,19 @@
 
 <body>
     <header class="contenedor">
-        <h1>OBLIGATORIO P1 - CARTELERA DE POSTULACIONES</h1>
-        <nav id="sectionNav">
-            <ul id="navUser">
-                <li id="btnVerOfertas"><a href="#">Ofertas</a></li>
-                <li id="btnVerOfertasDestacadas"><a href="#">Ofertas Destacadas</a></li>
-                <li id="btnVerPostulaciones"><a href="#">Mis Postulaciones</a></li>
-            </ul>
-            <ul id="navAdmin">
-                <li id="btnPrincipalAdmin"><a href="#">Crear Ofertas</a></li>
-                <li id="btnAdminOfertas"><a href="#">Administrar de ofertas</a></li>
-                <li id="btnAdminPostulaciones"><a href="#">Postulaciones</a></li>
-                <li id="btnEstadisticas"><a href="#">Estadisticas del sistema</a></li>
-            </ul>
-            <section id="sectionCerrarSesion">
-                <p id="resultadoCerrarSesion"></p>
-                <button id="btnCerrarSesion" class="botones">Cerrar Sesión</button>
+        <section id="headerPrincipal">
+            <h1>OBLIGATORIO P1 - CARTELERA DE POSTULACIONES</h1>
+            <!-- ---------LOGIN--------- -->
+            <section id="sectionLogin">
+                <label for="loginUser">Nombre de usuario</label>
+                <input type="text" id="loginUser" value="admin1">
+                <label for="loginPass">Contraseña</label>
+                <input type="password" id="loginPass" value="Admin123">
+                <button id="btnIngreso" class="botones">Ingresar</button>
+                <button id="navegarSectionRegistro" class="botones">Registrar</button>
+                <p id="resultadoIngreso"></p>
             </section>
-        </nav>
-        <!-- ---------LOGIN--------- -->
-        <section id="sectionLogin">
-            <label for="loginUser">Nombre de usuario</label>
-            <input type="text" id="loginUser" value="admin1">
-            <label for="loginPass">Contraseña</label>
-            <input type="password" id="loginPass" value="Admin123">
-            <button id="btnIngreso" class="botones">Ingresar</button>
-            <button id="navegarSectionRegistro" class="botones">Registrar</button>
-            <p id="resultadoIngreso"></p>
-        </section>
-
-    </header>
-
-    <main class="contenedor">
-
-        <!-- ---------REGISTRO--------- -->
+                    <!-- ---------REGISTRO--------- -->
         <section id="sectionRegistro">
             <h2>Registro Usuario</h2>
             <label for="registroUser">Nombre de usuario</label>
@@ -71,16 +50,44 @@
                 <option value="otros">Otros</option>
             </select>
             <button id="btnRegister">Registrarse</button>
+            <button id="btnRegisterCancelar">Cancelar</button>
             <p id="resultadoRegister"></p>
         </section>
+        </section>
+        <section id="headerLogin">
+            <h1>OBLIGATORIO P1 - CARTELERA DE POSTULACIONES</h1>
+            <section id="sectionCerrarSesion">
+                <p id="resultadoCerrarSesion"></p>
+                <button id="btnCerrarSesion" class="botones">Cerrar Sesión</button>
+            </section>
+        </section>
+        <nav id="sectionNav">
+            <ul id="navUser">
+                <li id="btnVerOfertas"><a href="#">Ofertas</a></li>
+                <li id="btnVerOfertasDestacadas"><a href="#">Ofertas Destacadas</a></li>
+                <li id="btnVerPostulaciones"><a href="#">Mis Postulaciones</a></li>
+            </ul>
+            <ul id="navAdmin">
+                <li id="btnAdminPostulaciones"><a href="#">Postulaciones</a></li>
+                <li id="btnPrincipalAdmin"><a href="#">Crear Ofertas</a></li>
+                <li id="btnAdminOfertas"><a href="#">Administrar de ofertas</a></li>
+                <li id="btnEstadisticas"><a href="#">Estadisticas del sistema</a></li>
+            </ul>
+        </nav>
+
+    </header>
+
+    <main class="contenedor">
+
+
 
 
         <!-- ---------USER--------- -->
         <section id="sectionPincipalUser">
             <h2>Ofertas Laborales</h2>
             <div class="seccionOfertas" id="resultadoOfertas"></div>
-            <p><strong id="resultadoOfertas2"></strong></p>
             <button id="btnTotalOfertas" class="botones">Ver todas</button>
+            <p><strong id="resultadoOfertas2"></strong></p>
         </section>
 
         <section id="sectionOfertasDestacadas">
@@ -165,7 +172,7 @@
 
     </main>
 
-    <footer class="contenedor">
+    <footer>
         <p>Obligatorio P1 - Juan Valentín Garcia Ponasso - Estudiante 225709</p>
     </footer>
 

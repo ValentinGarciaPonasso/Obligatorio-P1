@@ -318,7 +318,7 @@ class Sistema {
         let cantRechazos = 0;
         for (let p of this.Postulaciones) {
             if (p.OfertaId === id) {
-                if (p.Estado !== "rechazada") {
+                if (p.Estado === "pendiente") {
                     p.Estado = "rechazada";
                     cantRechazos++
                 }

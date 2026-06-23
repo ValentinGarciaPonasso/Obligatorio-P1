@@ -9,10 +9,11 @@ function inicio() {
 
 
 function ocultarSecciones() {
+    document.querySelector("#headerLogin").style.display = "none"
     document.querySelector("#sectionRegistro").style.display = "none"
     document.querySelector("#sectionPincipalUser").style.display = "none"
     document.querySelector("#sectionNav").style.display = "none"
-    document.querySelector("#sectionCerrarSesion").style.display = "none"
+    // document.querySelector("#sectionCerrarSesion").style.display = "none"
     document.querySelector("#sectionPostulacionesUsuario").style.display = "none"
     document.querySelector("#sectionOfertasDestacadas").style.display = "none"
     document.querySelector("#sectionPincipalAdmin").style.display = "none"
@@ -23,9 +24,11 @@ function ocultarSecciones() {
 }
 
 function ocultarLogin(user) {
-    document.querySelector("#sectionLogin").style.display = "none";
-    document.querySelector("#sectionCerrarSesion").style.display = "flex";
-    document.querySelector("#sectionNav").style.display = "flex"
+    // document.querySelector("#sectionLogin").style.display = "none";
+    document.querySelector("#headerPrincipal").style.display = "none"
+    // document.querySelector("#sectionCerrarSesion").style.display = "flex";
+    document.querySelector("#headerLogin").style.display = "flex"
+    document.querySelector("#sectionNav").style.display = "block"
     document.querySelector("#resultadoCerrarSesion").innerHTML = `${user.Nombre} (${user.User})`
     if (user.Rol === "admin") {
         document.querySelector("#navAdmin").style.display = "flex";
@@ -37,8 +40,10 @@ function ocultarLogin(user) {
 }
 
 
+
 function eventosBotones() {
     document.querySelector("#navegarSectionRegistro").addEventListener("click", mostrarSeccionRegistro);
+    document.querySelector("#btnRegisterCancelar").addEventListener("click", mostrarLoginPrincipal);
     document.querySelector("#btnRegister").addEventListener("click", registrarUsuario);
     document.querySelector("#btnIngreso").addEventListener("click", loginUsuario);
     document.querySelector("#btnCerrarSesion").addEventListener("click", cerrarSesion);
@@ -62,13 +67,19 @@ function pasarMayuscula(palabra) {
 
 function mostrarSeccionRegistro() {
     ocultarSecciones()
+    document.querySelector("#sectionLogin").style.display = "none"
     document.querySelector("#sectionRegistro").style.display = "block"
+}
+
+function mostrarLoginPrincipal(){
+    document.querySelector("#sectionLogin").style.display = "flex"
+    document.querySelector("#sectionRegistro").style.display = "none"
 }
 
 function mostrarSeccionLogin() {
     ocultarSecciones()
-    document.querySelector("#sectionLogin").style.display = "block";
-    document.querySelector("#sectionLogin").style.display = "block";
+    // document.querySelector("#sectionLogin").style.display = "block";
+    document.querySelector("#headerPrincipal").style.display = "flex";
 }
 
 function cerrarSesion() {
@@ -133,6 +144,7 @@ function registrarUsuario() {
         }
     }
     document.querySelector("#resultadoRegister").innerHTML = resultado;
+    mostrarLoginPrincipal()
 
 }
 
@@ -150,7 +162,7 @@ function loginUsuario() {
         if (usuarioEncontrado.Rol === "user") {
             mostrarOfertas(usuarioEncontrado, true);
         } else {
-            mostrarPrincipalAdmin();
+            adminPostulaciones();
         }
     }
     document.querySelector("#resultadoIngreso").innerHTML = resultado;
@@ -159,7 +171,7 @@ function loginUsuario() {
 function mostrarOfertas(usuarioEncontrado, validaInteres) {
     ocultarSecciones()
     ocultarLogin(usuarioEncontrado)
-    document.querySelector("#sectionPincipalUser").style.display = "block";
+    document.querySelector("#sectionPincipalUser").style.display = "flex";
     document.querySelector("#resultadoOfertas2").innerHTML = "";
     let resultado = "";
     let listadoOfertas = sistema.obtenerOfertas(usuarioEncontrado, validaInteres);
@@ -258,6 +270,7 @@ function postularOferta() {
         } else {
             resultado = "Se aplicó correctamente la postulación a la oferta: " + ofertaAgregada.Titulo;
         }
+        alert(resultado);
         mostrarOfertas(usuarioLogeado, true);
         document.querySelector(`#resultadoOfertas2`).innerHTML = resultado;
     }
@@ -629,6 +642,7 @@ function verEstadisticas() {
                     <td>Cerradas</td>
                     <td>${estadosOfertas.cerradas}</td>
                 </tr>
+            </table>
         `
     }
     document.querySelector("#ofertasEstadisticas").innerHTML = resultado2;
@@ -639,9 +653,18 @@ function verEstadisticas() {
         resultado3 = "Error al calcular el porcentaje de vacantes cubiertas";
     } else {
         resultado3 = `
-            Vacantes cubiertas: ${vacantes.cubiertas} <br>
-            Vacantes totales: ${vacantes.totales} <br>
-            Porcentaje cubiertas: ${vacantes.porcentaje}
+            <table>
+                <tr>
+                    <th>Vacantes cubiertas</td>
+                    <th>Vacantes totales</td>
+                    <th>Porcentaje cubiertas</td>
+                </tr>
+                <tr>
+                    <td>${vacantes.cubiertas}</td>
+                    <td>${vacantes.totales}</td>
+                    <td>${vacantes.porcentaje}</td>
+                </tr>
+            </table>
         `
     }
     document.querySelector("#vacantesEstadisticas2").innerHTML = resultado3;
@@ -651,8 +674,27 @@ function verEstadisticas() {
     if (mayorPostulante.length === 0) {
         resultado4 = "No se encontraron postulantes";
     } else {
-        for (let mP of mayorPostulante) {
-            resultado4 += `Postulante: ${mP.user.Nombre} (${mP.user.User}) -  Cantidad de postulaciones: ${mP.cant} <br>`
+        if(mayorPostulante[0].cant === 0){
+            resultado4 = "Ningun usuario cuenta con postulaciones";
+        } else {
+            resultado4 += `
+                <table>
+                    <tr>
+                        <th>Usuario</th>
+                        <th>Nombre</th>
+                        <th>Cantidad postulaciones</th>
+                    </tr>
+            `
+            for (let mP of mayorPostulante) {
+                resultado4 += `
+                    <tr>
+                        <td>${mP.user.User}</td>
+                        <td>${mP.user.Nombre}</td>
+                        <td>${mP.cant}</td>
+                    </tr>
+                `
+            }
+            resultado4 += "</table>"
         }
     }
     document.querySelector("#postulantesEstadisticas").innerHTML = resultado4;
