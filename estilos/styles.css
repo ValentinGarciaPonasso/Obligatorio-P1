@@ -48,6 +48,7 @@ footer {
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
 }
 
 #sectionRegistro h2 {
@@ -62,7 +63,7 @@ footer {
 #sectionRegistro label {
     margin-top: 10px;
     margin-bottom: 5px;
-    font-size: 10px;
+    font-size: 13px;
     font-weight: bold;
     color: #475569;
 }
@@ -77,7 +78,7 @@ footer {
     border: 1px solid #cbd5e1;
     border-radius: 10px;
     background-color: #f8fafc;
-    font-size: 10px;
+    font-size: 12px;
     transition: 0.2s;
 
 }
@@ -98,14 +99,15 @@ footer {
     border-radius: 10px;
     background-color: #2c3e50;
     color: white;
-    font-size: 10px;
+    font-size: 13px;
     font-weight: bold;
     cursor: pointer;
     transition: 0.2s;
     align-self: center;
 }
 
-#btnRegister:hover {
+#btnRegister:hover,
+#btnRegisterCancelar:hover {
     background-color: #4f46e5;
 }
 
@@ -242,6 +244,15 @@ footer {
     background-color: white;
     border-radius: 12px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+}
+
+#sectionLogin h2 {
+    align-self: stretch;
+    text-align: center;
+    margin-bottom: 10px;
+    background-color: #2c3e50;
+    color: white;
+    font-size: 20px;
 }
 
 /* Labels */

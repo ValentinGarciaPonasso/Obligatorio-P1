@@ -7,24 +7,139 @@ class Sistema {
     }
 
     preCargaDatos() {
+        //ADMINS
         let a1 = new User("admin1", "Admin123", "Administrador", ".", ".", "admin");
         let a2 = new User("admin2", "Admin123", "Administrador", ".", ".", "admin");
         let a3 = new User("admin3", "Admin123", "Administrador", ".", ".", "admin");
-        let c1 = new User("ival1", "valE4495", "Valentin Garcia", "jr", "tec", "user");
-        let c2 = new User("ival2", "valE4495", "Valentin Garcia", "semiSr", "disenio", "user");
-        let c3 = new User("ival3", "valE4495", "Valentin Garcia", "sr", "administracion", "user");
-        let o1 = new Oferta("Desarrollador Semi Sr", "Microsoft", "Desarrollador back-end", "semiSr", "tecnologia", 20, 10, true);
-        let o2 = new Oferta("Desarrollador Sr", "Microsoft", "Desarrollador back-end", "sr", "tecnologia", 1, 1, false);
-        let o3 = new Oferta("Auxiliar Administrativo", "Microsoft", "Desarrollador back-end", "jr", "administracion", 10, 1, true);
+
         this.addUser(a1);
         this.addUser(a2);
         this.addUser(a3);
+
+        //USERS
+        let c1 = new User("ival1", "valE4495", "Valentin Garcia", "jr", "tec", "user");
+        let c2 = new User("ival2", "valE4495", "Valentin Garcia", "semiSr", "disenio", "user");
+        let c3 = new User("ival3", "valE4495", "Valentin Garcia", "sr", "administracion", "user");
         this.addUser(c1);
         this.addUser(c2);
         this.addUser(c3);
+
+        let u1 = new User("user1", "User123", "Ana Perez", "jr", "tecnologia", "user");
+        let u2 = new User("user2", "User123", "Bruno Silva", "jr", "disenio", "user");
+        let u3 = new User("user3", "User123", "Camila Lopez", "jr", "marketing", "user");
+        let u4 = new User("user4", "User123", "Diego Torres", "jr", "administracion", "user");
+        let u5 = new User("user5", "User123", "Elena Castro", "jr", "otros", "user");
+
+        let u6 = new User("user6", "User123", "Federico Ramos", "semiSr", "tecnologia", "user");
+        let u7 = new User("user7", "User123", "Gabriela Diaz", "semiSr", "disenio", "user");
+        let u8 = new User("user8", "User123", "Hector Nuñez", "semiSr", "marketing", "user");
+        let u9 = new User("user9", "User123", "Isabel Medina", "semiSr", "administracion", "user");
+        let u10 = new User("user10", "User123", "Joaquin Sosa", "semiSr", "otros", "user");
+
+        let u11 = new User("user11", "User123", "Karina Acosta", "sr", "tecnologia", "user");
+        let u12 = new User("user12", "User123", "Lucas Fernandez", "sr", "disenio", "user");
+        let u13 = new User("user13", "User123", "Martina Suarez", "sr", "marketing", "user");
+        let u14 = new User("user14", "User123", "Nicolas Pereira", "sr", "administracion", "user");
+        let u15 = new User("user15", "User123", "Olivia Rocha", "sr", "otros", "user");
+
+        this.addUser(u1);
+        this.addUser(u2);
+        this.addUser(u3);
+        this.addUser(u4);
+        this.addUser(u5);
+        this.addUser(u6);
+        this.addUser(u7);
+        this.addUser(u8);
+        this.addUser(u9);
+        this.addUser(u10);
+        this.addUser(u11);
+        this.addUser(u12);
+        this.addUser(u13);
+        this.addUser(u14);
+        this.addUser(u15);
+
+        //OFERTAS
+        let o1 = new Oferta("Desarrollador Frontend Jr", "Globant", "Trabajo con HTML, CSS y JS.", "jr", "tecnologia", 10, 2, true);
+        let o2 = new Oferta("Diseñador UX/UI Semi Sr", "Mercado Libre", "Diseño de interfaces web y mobile.", "semiSr", "disenio", 8, 2, true);
+        let o3 = new Oferta("Analista de Marketing Jr", "PedidosYa", "Campañas digitales y redes sociales.", "jr", "marketing", 6, 1, false);
+        let o4 = new Oferta("Administrativo Semi Sr", "Abitab", "Gestión administrativa y reportes.", "semiSr", "administracion", 5, 1, false);
+        let o5 = new Oferta("Project Manager Sr", "IBM", "Gestión de proyectos tecnológicos.", "sr", "otros", 2, 1, false);
+        let o6 = new Oferta("Backend Developer Sr", "Microsoft", "Desarrollo backend con APIs.", "sr", "tecnologia", 7, 2, true);
+        let o7 = new Oferta("Diseñador Gráfico Jr", "Canva", "Diseño de piezas gráficas.", "jr", "disenio", 5, 1, false);
+        let o8 = new Oferta("Community Manager Semi Sr", "Coca Cola", "Gestión de comunidades online.", "semiSr", "marketing", 6, 2, false);
+        let o9 = new Oferta("Contador Sr", "Deloitte", "Contabilidad y análisis financiero.", "sr", "administracion", 3, 1, false);
+        let o10 = new Oferta("Soporte Técnico Jr", "TCS", "Atención y soporte a usuarios.", "jr", "otros", 10, 3, false);
+
+
         this.addOferta(o1);
         this.addOferta(o2);
         this.addOferta(o3);
+        this.addOferta(o4);
+        this.addOferta(o5);
+        this.addOferta(o6);
+        this.addOferta(o7);
+        this.addOferta(o8);
+        this.addOferta(o9);
+        this.addOferta(o10);
+
+        //POSTULACIONES
+
+        let p1 = this.postularOferta(o1, u1);
+        let p2 = this.postularOferta(o1, u6);
+        let p3 = this.postularOferta(o1, u11);
+
+        let p4 = this.postularOferta(o2, u7);
+        let p5 = this.postularOferta(o2, u12);
+
+        let p6 = this.postularOferta(o3, u3);
+        let p7 = this.postularOferta(o3, u8);
+
+        let p8 = this.postularOferta(o4, u9);
+        let p9 = this.postularOferta(o4, u14);
+
+        let p10 = this.postularOferta(o5, u15);
+        let p11 = this.postularOferta(o5, u10);
+
+        let p12 = this.postularOferta(o6, u11);
+        let p13 = this.postularOferta(o6, u6);
+
+        let p14 = this.postularOferta(o7, u2);
+        let p15 = this.postularOferta(o7, u12);
+
+        let p16 = this.postularOferta(o8, u8);
+        let p17 = this.postularOferta(o8, u13);
+
+        let p18 = this.postularOferta(o8, u14);
+
+        let p19 = this.postularOferta(o10, u5);
+        let p20 = this.postularOferta(o10, u10);
+
+        // ESTADOS
+        this.aprobarPostulacion(p2.Id);
+        this.rechazarPostulacion(p3.Id);
+
+        this.aprobarPostulacion(p5.Id);
+
+        this.rechazarPostulacion(p6.Id);
+
+        this.aprobarPostulacion(p8.Id);
+        this.rechazarPostulacion(p9.Id);
+
+        this.rechazarPostulacion(p11.Id);
+
+        this.aprobarPostulacion(p12.Id);
+
+        this.rechazarPostulacion(p14.Id);
+        this.aprobarPostulacion(p15.Id);
+
+        this.rechazarPostulacion(p17.Id);
+
+        this.aprobarPostulacion(p18.Id);
+
+        this.rechazarPostulacion(p20.Id);
+
+
+
     }
 
     //REGISTRAR USUARIO
@@ -109,7 +224,7 @@ class Sistema {
             let validaExpe = false;
             let validaOferta = true;
             let oferta = this.Ofertas[i];
-            if (oferta.Estado === "activa" && (oferta.CantVacantes < oferta.LimiteVacantes) && (oferta.CantPostulaciones < oferta.LimitePostulaciones) ) {
+            if (oferta.Estado === "activa" && (oferta.CantVacantes < oferta.LimiteVacantes) && (oferta.CantPostulaciones < oferta.LimitePostulaciones)) {
                 if (oferta.NivelRequerido === "sr") {
                     if (usuario.Expe === "sr") {
                         validaExpe = true;
@@ -198,7 +313,7 @@ class Sistema {
     addOferta(oferta) {
         if (oferta.Titulo.trim() === "" || oferta.Titulo.length < 5) {
             return 1
-        } else if (oferta.Empresa.trim() === "" || oferta.Empresa.length < 5) {
+        } else if (oferta.Empresa.trim() === "" || oferta.Empresa.length < 2) {
             return 2
         } else if (oferta.Descripcion.trim() === "") {
             return 3
@@ -206,9 +321,9 @@ class Sistema {
             return 4
         } else if (oferta.AreaOferta.trim() === "" || oferta.AreaOferta == "-1") {
             return 5
-        } else if (isNaN(oferta.LimitePostulaciones) || oferta.LimitePostulaciones < 0) {
+        } else if (isNaN(oferta.LimitePostulaciones) || oferta.LimitePostulaciones <= 0) {
             return 6
-        } else if (isNaN(oferta.LimiteVacantes) || oferta.LimiteVacantes < 0) {
+        } else if (isNaN(oferta.LimiteVacantes) || oferta.LimiteVacantes <= 0) {
             return 7
         } else if (oferta.OfertaDestacada === "") {
             return 8
@@ -237,7 +352,7 @@ class Sistema {
                 if (o.CantVacantes >= o.LimiteVacantes || o.CantPostulaciones >= o.LimitePostulaciones) {
                     return null
                 }
-                o.CantPostulaciones ++;
+                o.CantPostulaciones++;
                 if (o.CantPostulaciones >= o.LimitePostulaciones) {
                     o.Estado = "inactiva";
                     o.Motivo = "Limite de postulaciones alcanzado";
@@ -344,12 +459,12 @@ class Sistema {
                                 o.Motivo = "Cantidad de vacantes cubiertas";
                                 cambioEstado = true;
                                 motivo = o.Motivo;
-                                cantRechazos = this.rechazarPostulaciones(o.Id); 
+                                cantRechazos = this.rechazarPostulaciones(o.Id);
                             }
                         }
                     }
                 }
-                cantRechazos --;
+                cantRechazos--;
                 p.Estado = "aprobada";
                 let postulacionAceptada = {
                     postulacion: p,
@@ -409,17 +524,17 @@ class Sistema {
         return datosOfertas
     }
 
-    calcularEstadosOfertas(){
+    calcularEstadosOfertas() {
         let cantActivas = 0;
         let cantInactivas = 0;
         let cantCerradas = 0;
-        for(let o of this.Ofertas){
-            if(o.Estado === "activa"){
-                cantActivas ++;
-            } else if (o.Estado === "inactiva"){
-                cantInactivas ++;
+        for (let o of this.Ofertas) {
+            if (o.Estado === "activa") {
+                cantActivas++;
+            } else if (o.Estado === "inactiva") {
+                cantInactivas++;
             } else {
-                cantCerradas ++;
+                cantCerradas++;
             }
         }
         let estadosOfertas = {
@@ -430,20 +545,20 @@ class Sistema {
         return estadosOfertas
     }
 
-    calcularPorcentajeVacantes(){
+    calcularPorcentajeVacantes() {
         let vacantesTotales = 0;
         let vacantesCubiertas = 0;
         let porcentajeVacantes = 0;
         let vacantes
-        for(let o of this.Ofertas){
+        for (let o of this.Ofertas) {
             vacantesTotales += o.LimiteVacantes;
             vacantesCubiertas += o.CantVacantes;
         }
-        if(vacantesTotales===0){
+        if (vacantesTotales === 0) {
             return null
         } else {
             porcentajeVacantes = (vacantesCubiertas / vacantesTotales) * 100;
-            vacantes={
+            vacantes = {
                 cubiertas: vacantesCubiertas,
                 totales: vacantesTotales,
                 porcentaje: porcentajeVacantes
@@ -452,29 +567,29 @@ class Sistema {
         }
     }
 
-    calcularMayorPostulante(){
+    calcularMayorPostulante() {
         let cantMaxPostulaciones = 0;
         let postulantes = new Array();
-        for(let u of this.Users){
+        for (let u of this.Users) {
             let cantPostulaciones = 0
-            for(let p of this.Postulaciones){
-                if(p.UserId === u.User){
-                    cantPostulaciones ++;
+            for (let p of this.Postulaciones) {
+                if (p.UserId === u.User) {
+                    cantPostulaciones++;
                 }
             }
             let objetoPostulante = {
                 user: u,
                 cant: cantPostulaciones
             }
-            if(cantPostulaciones > cantMaxPostulaciones){
+            if (cantPostulaciones > cantMaxPostulaciones) {
                 postulantes = [];
                 postulantes.push(objetoPostulante);
                 cantMaxPostulaciones = cantPostulaciones;
-            } else if(cantPostulaciones === cantMaxPostulaciones){
+            } else if (cantPostulaciones === cantMaxPostulaciones) {
                 postulantes.push(objetoPostulante);
                 cantMaxPostulaciones = cantPostulaciones;
             }
         }
-        return postulantes 
-    }   
+        return postulantes
+    }
 }

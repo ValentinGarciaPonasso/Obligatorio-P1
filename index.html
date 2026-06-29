@@ -14,12 +14,15 @@
             <h1>OBLIGATORIO P1 - CARTELERA DE POSTULACIONES</h1>
             <!-- ---------LOGIN--------- -->
             <section id="sectionLogin">
+                <h2>Iniciar sesión</h2>
                 <label for="loginUser">Nombre de usuario</label>
-                <input type="text" id="loginUser" value="admin1">
+                <input type="text" id="loginUser">
                 <label for="loginPass">Contraseña</label>
-                <input type="password" id="loginPass" value="Admin123">
-                <button id="btnIngreso" class="botones">Ingresar</button>
-                <button id="navegarSectionRegistro" class="botones">Registrar</button>
+                <input type="password" id="loginPass">
+                <div>
+                    <button id="btnIngreso" class="botones">Ingresar</button>
+                    <button id="navegarSectionRegistro" class="botones">Registrar</button>
+                </div>
                 <p id="resultadoIngreso"></p>
             </section>
             <!-- ---------REGISTRO--------- -->
@@ -34,14 +37,14 @@
                 <label for="registroName">Nombre completo</label>
                 <input type="text" id="registroName">
                 <label for="registroExpe">Nivel de experiencia</label>
-                <select name="registroExpe" id="registroExpe">
+                <select name="registroExpe" id="registroExpe" value="-1">
                     <option value="-1">Seleccione...</option>
                     <option value="jr">Junior</option>
                     <option value="semiSr">Semi-Senior</option>
                     <option value="sr">Senior</option>
                 </select>
                 <label for="registroArea">Área de interés</label>
-                <select name="registroArea" id="registroArea">
+                <select name="registroArea" id="registroArea" value="-1">
                     <option value="-1">Seleccione...</option>
                     <option value="tecnologia">Tecnologia</option>
                     <option value="disenio">Diseño</option>
@@ -49,8 +52,10 @@
                     <option value="administracion">Administración</option>
                     <option value="otros">Otros</option>
                 </select>
-                <button id="btnRegister">Registrarse</button>
-                <button id="btnRegisterCancelar">Cancelar</button>
+                <div>
+                    <button id="btnRegister">Registrarse</button>
+                    <button id="btnRegisterCancelar">Cancelar</button>
+                </div>
                 <p id="resultadoRegister"></p>
             </section>
         </section>
@@ -70,17 +75,14 @@
             <ul id="navAdmin">
                 <li id="btnAdminPostulaciones"><a href="#">Postulaciones</a></li>
                 <li id="btnPrincipalAdmin"><a href="#">Crear Ofertas</a></li>
-                <li id="btnAdminOfertas"><a href="#">Administrar de ofertas</a></li>
-                <li id="btnEstadisticas"><a href="#">Estadisticas del sistema</a></li>
+                <li id="btnAdminOfertas"><a href="#">Administrador de ofertas</a></li>
+                <li id="btnEstadisticas"><a href="#">Estadísticas del sistema</a></li>
             </ul>
         </nav>
 
     </header>
 
     <main class="contenedor">
-
-
-
 
         <!-- ---------USER--------- -->
         <section id="sectionPincipalUser">

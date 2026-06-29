@@ -68,7 +68,7 @@ function pasarMayuscula(palabra) {
 function mostrarSeccionRegistro() {
     ocultarSecciones()
     document.querySelector("#sectionLogin").style.display = "none"
-    document.querySelector("#sectionRegistro").style.display = "block"
+    document.querySelector("#sectionRegistro").style.display = "flex"
 }
 
 function mostrarLoginPrincipal(){
@@ -326,7 +326,7 @@ function crearOferta() {
     let ofertaCreada = sistema.addOferta(oferta);
     switch (ofertaCreada) {
         case 1:
-            resultado = "Favor introduzca un titulo válido";
+            resultado = "Favor introduzca un título válido";
             break;
         case 2:
             resultado = "Favor introduzca una empresa válida";
@@ -338,7 +338,7 @@ function crearOferta() {
             resultado = "Favor seleccione un nivel de experiencia válido";
             break;
         case 5:
-            resultado = "Favor seleccione un área de interes válida";
+            resultado = "Favor seleccione un área de interés válida";
             break;
         case 6:
             resultado = "Favor introduzca un límite de postulaciones válido";
@@ -523,7 +523,7 @@ function adminPostulaciones() {
                     <p><strong>Usuario:</strong> ${lP.UserId}</p>
                     <p><strong>Oferta:</strong> ${lP.OfertaId}</p>
                     <p><strong>Id:</strong> ${lP.Id}</p>
-                    <p style="color: Red;"><strong>Estado:</strong> ${pasarMayuscula(lP.Estado)}</p>
+                    <p id="p${lP.Id}"><strong>Estado:</strong> ${pasarMayuscula(lP.Estado)}</p>
                     <button id="btnAceptarPostulacion${lP.Id}" class="btnAceptarPostulacion">Aceptar</button>
                     <button id="btnRechazarPostulacion${lP.Id}" class="btnRechazarPostulacion">Rechazar</button>
                 </div>
@@ -535,6 +535,8 @@ function adminPostulaciones() {
         if (lP.Estado !== "pendiente") {
             document.querySelector(`#btnAceptarPostulacion${lP.Id}`).disabled = true;
             document.querySelector(`#btnRechazarPostulacion${lP.Id}`).disabled = true;
+        } else {
+            document.querySelector(`#p${lP.Id}`).style.color = "red";
         }
     }
     let botonesAceptar = document.querySelectorAll(".btnAceptarPostulacion");
@@ -557,13 +559,14 @@ function aceptarPostulacion() {
     } else {
         resultado = `Postulación ${postulacionAceptada.postulacion.Titulo} (Id: ${postulacionAceptada.postulacion.Id}) aprobada correctamente <br>`;
         if (postulacionAceptada.cambioEstado) {
-            resultado += `Se modifico la oferta a estado inactiva, motivo: ${postulacionAceptada.motivo} <br>`;
+            resultado += `Se modificó la oferta a estado inactiva, motivo: ${postulacionAceptada.motivo} <br>`;
             if (postulacionAceptada.cantRechazos > 0) {
                 resultado += `Se rechazaron un total de ${postulacionAceptada.cantRechazos} postulaciones`;
             }
         }
     }
     adminPostulaciones();
+    alert(resultado);
     document.querySelector("#resultadoadministrarPostulaciones2").innerHTML = resultado;
 }
 
@@ -678,7 +681,7 @@ function verEstadisticas() {
         resultado4 = "No se encontraron postulantes";
     } else {
         if(mayorPostulante[0].cant === 0){
-            resultado4 = "Ningun usuario cuenta con postulaciones";
+            resultado4 = "Ningún usuario cuenta con postulaciones";
         } else {
             resultado4 += `
                 <table>
